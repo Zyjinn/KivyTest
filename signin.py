@@ -1,9 +1,16 @@
-# Import
+# Import other Python stuff
+import time
+# Import kivy modules
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from kivy.input.factory import MotionEventFactory
+from kivy.uix.button import Button
+
 
 class SigninWindow(BoxLayout):
-    pass
+    # Initialization function
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
     
@@ -35,6 +42,22 @@ class SigninWindow(BoxLayout):
             # Not a valid user
             else:
                 info.text = '[color=#ff0000] Invalid Username and/or Password![/color]'
+    
+
+    
+    # Popup creation function for exiting program
+    def createPopup(self):
+        content = Button(text="Really Exit?")
+        popup = Popup(content=content, auto_dismiss = False, background = 'atlas://data/images/defaulttheme/button_pressed')
+
+        # Exit the program after a short delay
+        # TODO: get popup to show confirming exit
+        def exitProgram(self):
+            quit()
+        content.bind(on_press=exitProgram)
+        popup.open()
+
+
 
 # Signin must be the name of the signin.kv file
 class SigninApp(App):

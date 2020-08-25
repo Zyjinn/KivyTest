@@ -2,6 +2,37 @@
 <FlatButton@ButtonBehavior+Label>:
     font_size: 16
 
+# Popup class import
+<MyPopup@Popup>:
+    auto_dismiss: False
+    Button:
+        text: "Close"
+        on_release: root.dismiss()
+# Create a rounded floaty button class
+# TODO: Make this fregin work
+<FloatButton@FloatLayout+Label>:
+    id: float_root
+    size:_hint:(None, None)
+    text: ''
+    button_size: (70, 70)
+    size: (70, 70)
+    bg_color: (0.06, .75, .46, 1)
+    
+
+    Button:
+        text: float_root.text
+        font_size: 40
+        size_hint: (None, None)
+        size: float_root.button_size
+        background_normal: ""
+        background_color: (0, 0, 0 ,0)
+        canvas.before:
+            Color:
+                rgba: float_root.bg_color
+            Ellipse:
+                size: self.size
+                pos: self.pos
+
 
 <SigninWindow>:
     id: main_widget
@@ -43,6 +74,7 @@
         orientation: "vertical"
         padding: main_widget.space_x, 10
         spacing: 10
+
         # Error messages displayed here!
         Label:
             id: info
@@ -73,6 +105,8 @@
                 write_tab: False
                 on_text_validate: root.validate_user()
                 password: True
+
+
         
         # Additional Spacing?
         Label:
@@ -89,6 +123,15 @@
             background_normal: ''
             on_release: root.validate_user()
 
+        # Exit application
+        Button:
+            text: "Quit"
+            size_hint_y: None
+            height: 80
+            background_color: (0.06, .75, .46, 1)
+            background_normal: ''
+            on_press: root.createPopup()
+            
         # Additional spacing?
         Label: 
             id: sp2
