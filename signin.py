@@ -4,6 +4,37 @@ from kivy.uix.boxlayout import BoxLayout
 
 class SigninWindow(BoxLayout):
     pass
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+    
+    # Validates the user's username and password
+    def validate_user(self):
+        # Set values
+        username = self.ids.username_field
+        password = self.ids.password_field
+        info = self.ids.info
+
+        # convert to strings?
+        username = username.text 
+        password = password.text
+
+        # Is the password/username blank?
+        if username == '' or password == '':
+            info.text = ("[color=#ff0000] Username or password required! [/color]")
+
+        # Check for user accounts
+        else: 
+            # Is the username and password match the admin account login?
+            if username == "admin" and password == "admin":
+                info.text = ("[color=#00ff00] Welcome Admin! You have logged in! [/color]")
+
+            # Is the user me?
+            elif username == "Zyjin" and password == "gamer":
+                info.text = ("[color=#00ff00] Welcome Zyjin! You have logged in! [/color]")
+
+            # Not a valid user
+            else:
+                info.text = '[color=#ff0000] Invalid Username and/or Password![/color]'
 
 # Signin must be the name of the signin.kv file
 class SigninApp(App):

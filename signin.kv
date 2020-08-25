@@ -43,6 +43,13 @@
         orientation: "vertical"
         padding: main_widget.space_x, 10
         spacing: 10
+        # Error messages displayed here!
+        Label:
+            id: info
+            text: ""
+            markup: True
+            size_hint_y: None
+            height: 20
 
         BoxLayout:
             orientation: "vertical"
@@ -52,13 +59,20 @@
 
             # Get username/password
             TextInput:
+                id: username_field
                 hint_text: "Username"
                 multiline: False
                 write_tab: False
+                focus: True
+                on_text_validate: pwd_field.focus = True
+
             TextInput:
+                id: password_field
                 hint_text: "Password"
                 multiline: False
                 write_tab: False
+                on_text_validate: root.validate_user()
+                password: True
         
         # Additional Spacing?
         Label:
@@ -66,13 +80,14 @@
             size_hint_y: None
             height: 40
 
-        # Signin button
+        # Submit button
         Button:
             text: "Sign In"
             size_hint_y: None
             height: 80
-            background_color: (.06, .45, .45, 1)
+            background_color: (0.06, .75, .46, 1)
             background_normal: ''
+            on_release: root.validate_user()
 
         # Additional spacing?
         Label: 
