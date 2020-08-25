@@ -51,7 +51,6 @@ class SigninWindow(BoxLayout):
         popup = Popup(content=content, auto_dismiss = False, background = 'atlas://data/images/defaulttheme/button_pressed')
 
         # Exit the program after a short delay
-        # TODO: get popup to show confirming exit
         def exitProgram(self):
             quit()
         content.bind(on_press=exitProgram)
