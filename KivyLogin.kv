@@ -1,9 +1,24 @@
 # Kivy css for login screen
-<SigninWindow>:
+<LoginUIWindow>:
     orientation: "vertical"
     spacing: 10
 
     GridLayout: 
         Label:
             text: "Login Screen"
+            bold: True
+            size_hint_x: .9 # 90% of available width
+        Button:
+            text: "x"
+            size_hint_x: .1 # 10% of available width
+    GridLayout:
+    orientation: "vertical"
+        TextInput:
+            hint_text: "Username"
+        TextInput:
+            hint_text: "Password"
+    Button:
+        text: "Sign in"
+
+        
         
