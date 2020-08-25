@@ -5,6 +5,7 @@ from kivy.uix.boxlayout import BoxLayout
 class SigninWindow(BoxLayout):
     pass
 
+# Signin must be the name of the signin.kv file
 class SigninApp(App):
     def build(self):
         return SigninWindow()

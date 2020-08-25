@@ -1,0 +1,20 @@
+<SigninWindow>:
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+
+    BoxLayout:
+        Label:
+            text: "User Login"
+            bold: True
+            size_hint_x: .9 # how much size widget takes up, 90% in this case
+        Button:
+            text: "x"
+            size_hint_x: .1
+    BoxLayout:
+        TextInput:
+            hint_text: "Username"
+        TextInput:
+            hint_text: "Password"
+    Button:
+        text: "Sign In"
