@@ -1,20 +1,79 @@
+# Button, inherit from button Behavior
+<FlatButton@ButtonBehavior+Label>:
+    font_size: 16
+
+
 <SigninWindow>:
+    id: main_widget
     orientation: "vertical"
     spacing: 10
     space_x: self.size[0]/3
 
+    # draw a rectangle(Background)
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    # Header bar
     BoxLayout:
+        size_hint_y: None
+        height: 50
+        # Header background
+        canvas.before:
+            Color:
+                rgba: (0.06, .75, .46, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        # Header text
         Label:
             text: "User Login"
             bold: True
-            size_hint_x: .9 # how much size widget takes up, 90% in this case
-        Button:
+            size_hint_x: .9 # how much size widget takes up, 90% in this case 
+    
+        # Header exit button
+        FlatButton:
             text: "x"
             size_hint_x: .1
     BoxLayout:
-        TextInput:
-            hint_text: "Username"
-        TextInput:
-            hint_text: "Password"
-    Button:
-        text: "Sign In"
+        orientation: "vertical"
+        padding: main_widget.space_x, 10
+        spacing: 10
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            size_hint_y: None
+            height: 80
+
+            # Get username/password
+            TextInput:
+                hint_text: "Username"
+                multiline: False
+                write_tab: False
+            TextInput:
+                hint_text: "Password"
+                multiline: False
+                write_tab: False
+        
+        # Additional Spacing?
+        Label:
+            id: sp
+            size_hint_y: None
+            height: 40
+
+        # Signin button
+        Button:
+            text: "Sign In"
+            size_hint_y: None
+            height: 80
+            background_color: (.06, .45, .45, 1)
+            background_normal: ''
+
+        # Additional spacing?
+        Label: 
+            id: sp2
