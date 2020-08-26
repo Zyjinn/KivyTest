@@ -46,7 +46,7 @@ class SigninWindow(BoxLayout):
 
     
     # Popup creation function for exiting program
-    def createPopup(self):
+    def createExitPopup(self):
         content = Button(text="Really Exit?")
         popup = Popup(content=content, auto_dismiss = False, background = 'atlas://data/images/defaulttheme/button_pressed')
 
@@ -54,6 +54,14 @@ class SigninWindow(BoxLayout):
         def exitProgram(self):
             quit()
         content.bind(on_press=exitProgram)
+        popup.open()
+
+    # Kivy doodoo popup
+    def createKivyPopup(self):
+        content = Button(text="Yes")
+        popup = Popup(title="is Kivy Doodoo?", content=content, auto_dismiss = False)
+
+        content.bind(on_press=popup.dismiss)
         popup.open()
 
 

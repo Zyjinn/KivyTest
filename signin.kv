@@ -84,7 +84,7 @@
             text: "x"
             size_hint_x: .1
             background_color: (0.157, 0.455, 0.753, 1.0)
-            on_press: root.createPopup()
+            on_press: root.createExitPopup()
     BoxLayout:
         orientation: "vertical"
         padding: main_widget.space_x, 10
@@ -150,7 +150,7 @@
             text: "Kivy Doodoo"
             halign: "left"
             back_color: (0.06, .75, .46, 1)
-            on_press: root.createPopup()
+            on_press: root.createKivyPopup()
     BoxLayout:
         orientation: "vertical"
         size_hint_y: .1
