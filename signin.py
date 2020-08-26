@@ -37,7 +37,7 @@ class SigninWindow(BoxLayout):
 
             # Is the user me?
             elif username == "Zyjin" and password == "gamer":
-                info.text = ("[color=#00ff00] Welcome Zyjin! You have logged in! [/color]")
+                info.text = ("[color=#00ff00] Welcome Nerd! You have logged in! [/color]")
 
             # Not a valid user
             else:
