@@ -8,32 +8,45 @@
     Button:
         text: "Close"
         on_release: root.dismiss()
-# Create a rounded floaty button class
-# TODO: Make this fregin work
-<FloatButton@FloatLayout+Label>:
-    id: float_root
-    size:_hint:(None, None)
-    text: ''
-    button_size: (70, 70)
-    size: (70, 70)
-    bg_color: (0.06, .75, .46, 1)
-    
 
-    Button:
-        text: float_root.text
-        font_size: 40
-        size_hint: (None, None)
-        size: float_root.button_size
-        background_normal: ""
-        background_color: (0, 0, 0 ,0)
-        canvas.before:
-            Color:
-                rgba: float_root.bg_color
-            Ellipse:
-                size: self.size
-                pos: self.pos
+# Create a smooth button
+<SmoothButton@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: [18]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
 
+# # Create a rounded floaty button class
+# TODO: #1 FloatButton doesn't work?
+# <FloatButton@FloatLayout+Label>:
+#     id: float_root
+#     size:_hint:(None, None)
+#     text: ''
+#     button_size: (70, 70)
+#     size: (70, 70)
+#     bg_color: (0.06, .75, .46, 1)
+#     Button:
+#         text: float_root.text
+#         font_size: 10
+#         size_hint: (None, None)
+#         size: float_root.button_size
+#         background_normal: ""
+#         background_color: (0, 0, 0 ,0)
+#         canvas.before:
+#             Color:
+#                 rgba: float_root.bg_color
+#             Ellipse:
+#                 size: self.size
+#                 pos: self.pos
 
+# START, Actual Login UI
 <SigninWindow>:
     id: main_widget
     orientation: "vertical"
@@ -66,10 +79,12 @@
             bold: True
             size_hint_x: .9 # how much size widget takes up, 90% in this case 
     
-        # Header exit button
+        # Exit the application
         FlatButton:
             text: "x"
             size_hint_x: .1
+            background_color: (0.157, 0.455, 0.753, 1.0)
+            on_press: root.createPopup()
     BoxLayout:
         orientation: "vertical"
         padding: main_widget.space_x, 10
@@ -108,30 +123,40 @@
 
 
         
-        # Additional Spacing?
+        # Additional Spacing
         Label:
             id: sp
             size_hint_y: None
             height: 40
 
         # Submit button
-        Button:
+        SmoothButton:
             text: "Sign In"
-            size_hint_y: None
-            height: 80
-            background_color: (0.06, .75, .46, 1)
-            background_normal: ''
+            back_color: (0.06, .75, .46, 1)
             on_release: root.validate_user()
-
-        # Exit application
-        Button:
-            text: "Quit"
-            size_hint_y: None
-            height: 80
-            background_color: (0.06, .75, .46, 1)
-            background_normal: ''
-            on_press: root.createPopup()
             
-        # Additional spacing?
+        # Additional spacing
         Label: 
             id: sp2
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint_y: .15
+        size_hint_x: .15
+
+        # Kivy doodoo
+        SmoothButton:
+            id: "kivy Doodoo"
+            text: "Kivy Doodoo"
+            halign: "left"
+            back_color: (0.06, .75, .46, 1)
+            on_press: root.createPopup()
+    BoxLayout:
+        orientation: "vertical"
+        size_hint_y: .1
+        Button:
+            id: "border"
+            text: ""
+            background_color: (0.06, .75, .46, 1)
+            background_normal: ""
+
